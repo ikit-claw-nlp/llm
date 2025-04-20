@@ -1,6 +1,6 @@
-# The Journal of Artificial Stupidty and Machine Forgetting
+# The Journal of Artificial Stupidity and Machine Forgetting
 ## LLM
-A toy llm used for deeping understanding of Large language models.
+A toy LLM used for deepening the understanding of Large language models.
 Equation test:
 
 $$ \text{softmax}\big(\frac{QK^{\text{T}}}{\sqrt{d_k}}\big)V$$
