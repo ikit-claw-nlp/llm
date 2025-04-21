@@ -7,9 +7,10 @@ if __name__ == "__main__":
     special_tokens = ["[PAD]", "[UNK]", "[CLS]", "[SEP]", "[MASK]", "[EOA]"]
     tokenizer.train(
         files = corpus_files,
-        vocab_size = 30000,
+        vocab_size = 5000,
         min_frequency = 5,
         special_tokens = special_tokens,
         show_progress = True
     )
-    tokenizer.save_model("tiny_llm_tokenizer")
+    # Remember create the dir tiny_llm_tokenizer in advance!
+    tokenizer.save("tiny_llm_tokenizer/tokenizer.json")

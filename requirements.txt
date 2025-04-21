@@ -3,3 +3,4 @@ transformers
 mwxml
 tqdm
 datasets
+ipywidgets
