@@ -1,5 +1,3 @@
-# The Journal of Artificial Stupidity and Machine Forgetting
-## LLM
 A toy LLM used for deepening the understanding of Large language models.
 Equation test:
 
