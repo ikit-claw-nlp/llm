@@ -6,6 +6,7 @@ data
 ikit-llm
 tiny_llm_tokenizer
 reference
+tokenizer
 # C extensions
 *.so
 
