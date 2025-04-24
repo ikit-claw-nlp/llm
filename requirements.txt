@@ -4,3 +4,4 @@ mwxml
 tqdm
 datasets
 ipywidgets
+sentencepiece
