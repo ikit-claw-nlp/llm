@@ -43,8 +43,10 @@ class MultiHeadAttention(nn.Module):
         K = K.transpose(2, 1)
         V = V.transpose(2, 1)
         # attention_weights => [batch_size, num_head, token_len, token_len]
-        attention_weights = torch.matmul(Q, K.transpose(-2, -1)) 
-        attention_weights = attention_weights / torch.sqrt(torch.Tensor([self.head_dim]))
+        attention_weights = torch.matmul(Q, K.transpose(-2, -1))
+        # Use Q.shape[-1] ** 0.5 to avoid
+        # RuntimeError: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu! 
+        attention_weights = attention_weights / Q.shape[-1]**0.5
         if self.use_mask:
             mask = self.mask.bool()[:token_len, :token_len]
             attention_weights.masked_fill_(mask, -torch.inf)
