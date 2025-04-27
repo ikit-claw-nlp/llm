@@ -1,18 +1,19 @@
 import torch
 import torch.nn as nn
 class MultiHeadAttention(nn.Module):
-    def __init__(self, n_heads, head_dim, d_model, seq_len, dropout =0.0, use_mask=False):
+    def __init__(self, n_heads, head_dim, d_model, seq_len, dropout =0.0, use_qkv_bias=False, use_mask=False):
         # if use_mask=False => self-attention
         # use_mask = True => casuality attention.
         # head_dim = d_k
+        # seq_len here is the maximal sequence length.
         super(MultiHeadAttention, self).__init__()
         self.n_heads = n_heads
         self.seq_len = seq_len
         self.head_dim = head_dim
         self.dropout = nn.Dropout(dropout)
-        self.W_Q = nn.Linear(d_model, n_heads * head_dim, bias=False)
-        self.W_K = nn.Linear(d_model, n_heads * head_dim, bias=False)
-        self.W_V = nn.Linear(d_model, n_heads * head_dim, bias=False)
+        self.W_Q = nn.Linear(d_model, n_heads * head_dim, bias=use_qkv_bias)
+        self.W_K = nn.Linear(d_model, n_heads * head_dim, bias=use_qkv_bias)
+        self.W_V = nn.Linear(d_model, n_heads * head_dim, bias=use_qkv_bias)
         # The book added a linear projection of the final output!
         self.output_proj = nn.Linear(n_heads * head_dim, n_heads * head_dim)
         # The book doesn't coding W_O in the attention paper!
