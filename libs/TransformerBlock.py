@@ -1,4 +1,4 @@
-from MHA import MultiHeadAttention
+from .MHA import MultiHeadAttention
 from torch import nn
 import torch
 
