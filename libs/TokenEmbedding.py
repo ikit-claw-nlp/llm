@@ -16,5 +16,5 @@ class TokenEmbedding(nn.Module):
         # embedding_idx => [batch_size, token_length]
         batch_size, token_length = embedding_idx.shape
         token_embedding = self.token_embeddings(embedding_idx)
-        pos_embedding = self.pos_embedding(torch.arange(token_length))
+        pos_embedding = self.pos_embedding(torch.arange(token_length, device=token_embedding.device))
         return token_embedding + pos_embedding
